@@ -1,4 +1,4 @@
-2024-07-09 17:50:53,724 ERROR: Exception on /user/ted [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+2024-07-09 16:09:38,147 ERROR: Exception on /index [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,8 +10,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
-    return render_template('user.html', user=user, posts=posts.items,
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 29, in index
+    return render_template("index.html", title='Home Page', form=form,
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
     return _render(app, template, context)
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
@@ -20,16 +20,18 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
-    {{ form.hidden_tag() }}
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2024-07-09 17:52:01,187 ERROR: Exception on /user/ted [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 13, in top-level template code
+    <a href="{{ url_for('explore') }}">Explore</a>
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'explore'. Did you mean 'edit_profile' instead?
+2024-07-09 16:09:40,797 ERROR: Exception on /index [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -41,8 +43,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
-    if posts.has_prev else None
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 29, in index
+    return render_template("index.html", title='Home Page', form=form,
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
     return _render(app, template, context)
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
@@ -51,16 +53,18 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
-    {{ form.hidden_tag() }}
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2024-07-09 17:52:28,137 ERROR: Exception on /user/ted [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 13, in top-level template code
+    <a href="{{ url_for('explore') }}">Explore</a>
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'explore'. Did you mean 'edit_profile' instead?
+2024-07-09 16:09:43,514 ERROR: Exception on / [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -72,8 +76,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
-    if posts.has_prev else None
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 29, in index
+    return render_template("index.html", title='Home Page', form=form,
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
     return _render(app, template, context)
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
@@ -82,12 +86,14 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
-    {{ form.hidden_tag() }}
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 13, in top-level template code
+    <a href="{{ url_for('explore') }}">Explore</a>
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'explore'. Did you mean 'edit_profile' instead?

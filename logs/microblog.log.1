@@ -1,81 +1,93 @@
-2024-07-08 15:18:31,903 ERROR: Exception on / [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
-Traceback (most recent call last):
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
+2024-07-09 17:52:28,805 ERROR: Exception on /user/ted [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 878, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1253, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 12, in before_request
-    if current_user.is_authenticated:
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/models.py", line 34, in load_user
-    return User.query.get(int(id))
-  File "<string>", line 2, in get
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
-    return fn(*args, **kwargs)  # type: ignore[no-any-return]
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 1127, in get
-    return self._get_impl(ident, loading.load_on_pk_identity)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 1136, in _get_impl
-    return self.session._get_impl(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3862, in _get_impl
-    return db_load_fn(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity
-    session.execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
-    return self._execute_internal(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2236, in _execute_internal
-    result: Result[Any] = compile_state_cls.orm_execute_statement(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
-    result = conn.execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
-    return meth(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
-    return connection._execute_clauseelement(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
-    ret = self._execute_context(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
-    return self._exec_single_context(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
-    self._handle_dbapi_exception(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
-[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
-FROM user 
-WHERE user.id = ?]
-[parameters: (3,)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2024-07-08 15:20:42,616 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 15:20:50,316 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 15:20:55,849 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 16:01:25,776 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 16:01:30,844 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 16:16:34,591 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 16:18:51,724 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 16:33:01,053 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-08 16:39:29,393 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
+    if posts.has_prev else None
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
+    {{ form.hidden_tag() }}
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2024-07-09 17:53:49,871 ERROR: Exception on /user/ted [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
+    if posts.has_prev else None
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
+    {{ form.hidden_tag() }}
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2024-07-09 17:53:53,068 ERROR: Exception on /user/ted [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
+    if posts.has_prev else None
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
+    {{ form.hidden_tag() }}
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
