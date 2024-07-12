@@ -1,4 +1,13 @@
-2024-07-09 17:54:06,971 ERROR: Exception on /user/sue [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+2024-07-12 11:20:45,298 ERROR: Exception on /login [POST] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,28 +17,55 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
-    if posts.has_prev else None
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
-    {{ form.hidden_tag() }}
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2024-07-09 17:54:07,583 ERROR: Exception on /user/sue [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 46, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2728, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2236, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('sue', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-07-12 11:21:10,721 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-12 11:21:13,865 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-12 11:23:59,539 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-12 14:25:26,702 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:27:08,843 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:30:08,501 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:32:29,024 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:34:43,504 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:37:15,359 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:40:08,456 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:41:34,867 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:42:23,450 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:43:17,898 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:44:18,593 ERROR: Exception on /reset_password_request [POST] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -39,26 +75,13 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 90, in user
-    if posts.has_prev else None
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/user.html", line 24, in block 'content'
-    {{ form.hidden_tag() }}
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 487, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2024-07-09 17:56:27,883 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-09 18:02:21,372 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 174, in reset_password_request
+    send_password_reset_email(user)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/email.py", line 20, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/models.py", line 66, in get_reset_password_token
+    {'reset_password': self.id, 'exp': time() + expires_in},
+TypeError: unsupported operand type(s) for +: 'datetime.time' and 'int'
+2024-07-12 14:52:15,637 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 14:53:29,700 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]
+2024-07-12 15:04:13,573 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:45]

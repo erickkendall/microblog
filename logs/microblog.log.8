@@ -1,13 +1,4 @@
-2024-07-08 15:18:28,011 ERROR: Exception on / [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
-Traceback (most recent call last):
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
+2024-07-08 16:39:34,025 ERROR: Exception on /follow/sue [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -29,44 +20,63 @@ Traceback (most recent call last):
     current_app.login_manager._load_user()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/login_manager.py", line 364, in _load_user
     user = self._user_callback(user_id)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/models.py", line 34, in load_user
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/models.py", line 65, in load_user
     return User.query.get(int(id))
-  File "<string>", line 2, in get
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
-    return fn(*args, **kwargs)  # type: ignore[no-any-return]
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 1127, in get
-    return self._get_impl(ident, loading.load_on_pk_identity)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 1136, in _get_impl
-    return self.session._get_impl(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3862, in _get_impl
-    return db_load_fn(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity
-    session.execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
-    return self._execute_internal(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2236, in _execute_internal
-    result: Result[Any] = compile_state_cls.orm_execute_statement(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
-    result = conn.execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
-    return meth(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
-    return connection._execute_clauseelement(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
-    ret = self._execute_context(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
-    return self._exec_single_context(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
-    self._handle_dbapi_exception(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
-[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
-FROM user 
-WHERE user.id = ?]
-[parameters: (3,)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
+    self._set_entities(entities)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 287, in _set_entities
+    self._raw_columns = [
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 288, in <listcomp>
+    coercions.expect(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
+    insp._post_inspect
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 4245, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2405, in _post_configure_properties
+    prop.init()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/interfaces.py", line 584, in init
+    self.do_init()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 1644, in do_init
+    self._setup_join_conditions()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 1884, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2314, in __init__
+    self._annotate_fks()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2550, in _annotate_fks
+    self._annotate_present_fks()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2608, in _annotate_present_fks
+    self.primaryjoin = visitors.cloned_traverse(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/visitors.py", line 1066, in cloned_traverse
+    obj = clone(
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/visitors.py", line 1062, in clone
+    meth(newelem)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2599, in visit_binary
+    col = is_foreign(binary.left, binary.right)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2576, in is_foreign
+    if a.references(b):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 2266, in references
+    if fk.column.proxy_set.intersection(column.proxy_set):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 1141, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 3173, in column
+    return self._resolve_column()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 3196, in _resolve_column
+    raise exc.NoReferencedTableError(
+sqlalchemy.exc.NoReferencedTableError: Foreign key associated with column 'followers.follower_id' could not find table 'User' with which to generate a foreign key to target column 'id'
+2024-07-08 16:40:02,649 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 14:13:38,800 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 14:58:21,069 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 15:50:23,707 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 15:53:18,122 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 15:54:37,452 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 16:09:31,299 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]

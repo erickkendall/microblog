@@ -1,82 +1,98 @@
-2024-07-08 16:39:34,025 ERROR: Exception on /follow/sue [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+2024-07-09 16:09:44,114 ERROR: Exception on / [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
   File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 878, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1253, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 12, in before_request
-    if current_user.is_authenticated:
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
-    obj = instance._get_current_object()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/local.py", line 526, in _get_current_object
-    return get_name(local())
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-  File "/Users/erickkendall/Desktop/flask-study/microblog/app/models.py", line 65, in load_user
-    return User.query.get(int(id))
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
-    return cls.query_class(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 275, in __init__
-    self._set_entities(entities)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 287, in _set_entities
-    self._raw_columns = [
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 288, in <listcomp>
-    coercions.expect(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/coercions.py", line 389, in expect
-    insp._post_inspect
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
-    self._check_configure()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 4204, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 4245, in _do_configure_registries
-    mapper._post_configure_properties()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2405, in _post_configure_properties
-    prop.init()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/interfaces.py", line 584, in init
-    self.do_init()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 1644, in do_init
-    self._setup_join_conditions()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 1884, in _setup_join_conditions
-    self._join_condition = jc = JoinCondition(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2314, in __init__
-    self._annotate_fks()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2550, in _annotate_fks
-    self._annotate_present_fks()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2608, in _annotate_present_fks
-    self.primaryjoin = visitors.cloned_traverse(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/visitors.py", line 1066, in cloned_traverse
-    obj = clone(
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/visitors.py", line 1062, in clone
-    meth(newelem)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2599, in visit_binary
-    col = is_foreign(binary.left, binary.right)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2576, in is_foreign
-    if a.references(b):
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 2266, in references
-    if fk.column.proxy_set.intersection(column.proxy_set):
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 1141, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 3173, in column
-    return self._resolve_column()
-  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 3196, in _resolve_column
-    raise exc.NoReferencedTableError(
-sqlalchemy.exc.NoReferencedTableError: Foreign key associated with column 'followers.follower_id' could not find table 'User' with which to generate a foreign key to target column 'id'
-2024-07-08 16:40:02,649 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-09 14:13:38,800 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-09 14:58:21,069 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-09 15:50:23,707 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-09 15:53:18,122 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-09 15:54:37,452 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
-2024-07-09 16:09:31,299 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 29, in index
+    return render_template("index.html", title='Home Page', form=form,
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/templates/base.html", line 13, in top-level template code
+    <a href="{{ url_for('explore') }}">Explore</a>
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'explore'. Did you mean 'edit_profile' instead?
+2024-07-09 16:13:21,897 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 16:26:35,293 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 16:26:43,897 ERROR: Exception on /index [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 30, in index
+    page, app.config['POSTS_PER_PAGE'], False)
+KeyError: 'POSTS_PER_PAGE'
+2024-07-09 16:29:51,883 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 16:29:57,985 ERROR: Exception on /index [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 29, in index
+    posts = current_user.followed_posts().paginate(
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2024-07-09 16:29:59,114 ERROR: Exception on /index [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 29, in index
+    posts = current_user.followed_posts().paginate(
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2024-07-09 16:30:04,908 ERROR: Exception on /index [GET] [in /Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/erickkendall/.pyenv/versions/3.10.2/envs/microblog/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/erickkendall/Desktop/flask-study/microblog/app/routes.py", line 29, in index
+    posts = current_user.followed_posts().paginate(
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2024-07-09 16:43:20,495 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
+2024-07-09 17:13:22,226 INFO: Microblog startup [in /Users/erickkendall/Desktop/flask-study/microblog/app/__init__.py:44]
