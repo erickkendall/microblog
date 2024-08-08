@@ -1,13 +1,13 @@
 import json
 import uuid
 import requests
+from app import current_app
 from flask_babel import _
-from app import app
 
 
 def translate(text, source_language, dest_language):
-    if 'MS_TRANSLATOR_KEY' not in app.config or \
-            not app.config['MS_TRANSLATOR_KEY']:
+    if 'MS_TRANSLATOR_KEY' not in current_app.config or \
+            not current_app.config['MS_TRANSLATOR_KEY']:
         return _('Error: the translation service is not configured.')
 
     endpoint = "https://api.cognitive.microsofttranslator.com"
@@ -26,7 +26,7 @@ def translate(text, source_language, dest_language):
     }
 
     headers = {
-        'Ocp-Apim-Subscription-Key': app.config['MS_TRANSLATOR_KEY'],
+        'Ocp-Apim-Subscription-Key': current_app.config['MS_TRANSLATOR_KEY'],
         # location required if you're using a multi-service or regional (not global) resource.
         'Ocp-Apim-Subscription-Region': location,
         'Content-type': 'application/json',
