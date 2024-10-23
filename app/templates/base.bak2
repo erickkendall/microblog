@@ -86,71 +86,50 @@
   <!-- In base.html, replace the existing script with this one -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Cache for storing fetched user data
-        const userDataCache = new Map();
+        console.log('DOM loaded, initializing popovers');
         
+        // Initialize user popovers
         const popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]');
+        console.log('Found popover elements:', popoverElements.length);
         
         popoverElements.forEach(function(element) {
             let username = element.getAttribute('data-username');
+            console.log('Initializing popover for username:', username);
             
             const popover = new bootstrap.Popover(element, {
                 html: true,
-                trigger: 'manual',
+                trigger: 'manual', // Changed to manual so we can control it
                 placement: 'right',
-                content: '<div class="text-center"><div class="spinner-border spinner-border-sm text-primary" role="status"></div> <span class="ms-2">Loading...</span></div>',
-                template: '<div class="popover" role="tooltip"><div class="popover-arrow"></div><div class="popover-body p-2"></div></div>'
+                content: 'Loading...'
             });
- 
+
+            // Add hover events
             let timeout;
-            let fetchTimeout;
- 
-            // Pre-fetch on mouse over
-            element.addEventListener('mouseover', function() {
-                if (!userDataCache.has(username)) {
-                    fetchTimeout = setTimeout(() => {
-                        fetch(`/user/${username}/popup`)
-                            .then(response => response.text())
-                            .then(html => {
-                                userDataCache.set(username, html);
-                            });
-                    }, 100);
-                }
-            });
- 
+
             element.addEventListener('mouseenter', function() {
                 timeout = setTimeout(() => {
                     popover.show();
-                    if (userDataCache.has(username)) {
-                        popover._config.content = userDataCache.get(username);
-                        popover.update();
-                    } else {
-                        fetch(`/user/${username}/popup`)
-                            .then(response => response.text())
-                            .then(html => {
-                                userDataCache.set(username, html);
+                    fetch(`/user/${username}/popup`)
+                        .then(response => response.text())
+                        .then(html => {
+                            const popover = bootstrap.Popover.getInstance(element);
+                            if (popover) {
                                 popover._config.content = html;
                                 popover.update();
-                            })
-                            .catch(error => {
-                                popover._config.content = '<div class="text-danger">Error loading user data</div>';
-                                popover.update();
-                                console.error('Error:', error);
-                            });
-                    }
-                }, 200);
+                            }
+                        });
+                }, 300); // Small delay before showing
             });
- 
+
             element.addEventListener('mouseleave', function() {
                 clearTimeout(timeout);
-                clearTimeout(fetchTimeout);
                 setTimeout(() => {
                     popover.hide();
-                }, 100);
+                }, 100); // Small delay before hiding
             });
         });
     });
- </script>
+</script>
 </body>
 
 </html>

@@ -1,0 +1,39 @@
+<div class="p-3">
+    <div class="row">
+        <div class="col-auto">
+            <img src="{{ user.avatar(64) }}" class="img-fluid rounded" alt="{{ user.username }}'s avatar">
+        </div>
+        <div class="col">
+            <h5>
+                <a href="{{ url_for('main.user', username=user.username) }}">
+                    {{ user.username }}
+                </a>
+            </h5>
+            {% if user.about_me %}
+            <p class="mb-2">{{ user.about_me }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if user.last_seen %}
+    <p class="text-muted small mb-2">
+        {{ _('Last seen on') }}: {{ moment(user.last_seen).format('lll') }}
+    </p>
+    {% endif %}
+
+    <p class="mb-2">
+        {{ _('%(count)d followers', count=user.followers_count()) }},
+        {{ _('%(count)d following', count=user.following_count()) }}
+    </p>
+
+    {% if user != current_user %}
+        <form action="{{ url_for('main.follow', username=user.username) }}" method="post">
+            {{ form.hidden_tag() }}
+            {% if not current_user.is_following(user) %}
+                {{ form.submit(value=_('Follow'), class_='btn btn-outline-primary btn-sm') }}
+            {% else %}
+                {{ form.submit(value=_('Unfollow'), class_='btn btn-outline-primary btn-sm') }}
+            {% endif %}
+        </form>
+    {% endif %}
+</div>
